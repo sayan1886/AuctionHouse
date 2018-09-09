@@ -1,0 +1,182 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+.navbar-brand {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#homepageBody {
+    background: #131f28;
+}
+
+.theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.theme-showcase>p>.btn {
+    margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+    width: auto;
+}
+
+.black {
+    color: black;
+}
+
+#address {
+    font-weight: bold;
+}
+
+#ethBalance {
+    font-weight: bold;
+}
+
+#withdrawBalance {
+    font-weight: bold;
+}
+
+#network {
+    font-weight: bold;
+}
+
+#spinner {
+    float: left;
+    border: 5px solid #f3f3f3;
+    /* Light grey */
+    border-top: 5px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+    margin-left: 10px;
+    display: none;
+}
+
+#statusMessage {
+    float: left;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.auctionLabel {
+    width: 190px;
+    vertical-align: top;
+}
+
+#nameToAuction {
+    width: 400px;
+}
+
+#nameToReserve {
+    width: 400px;
+}
+
+#contractAddress {
+    width: 400px;
+}
+
+.auctionDetails td {
+    padding: 8px;
+}
+
+#headerRow {
+    text-align: center;
+    background-color: #131f28;
+}
+
+#headerRow h1 {
+    color: #ffe160;
+    font-size: 42px;
+}
+
+#headerRow h3 {
+    color: #c79d36;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+c79d36 #headerRow #headerLabel {
+    margin: 20px auto;
+    text-align: center;
+    width: 500px;
+}
+
+#headerRow li {
+    color: white;
+    padding: 5px;
+    list-style-type: none;
+}
+
+#headerRow p {
+    color: #666666;
+}
+
+#headerRow hr {
+    width: 100px;
+    margin-bottom: 60px;
+}
+
+#headerRow #createAuctionButton {
+    background-image: linear-gradient(to bottom, #95f4f1 0, #95f4f1 100%);
+    color: #131f28;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-color: #95f4f1;
+    background-color: #95f4f1;
+}
+
+#headerRow img#heroImage {
+    width: 300px;
+    height: 139px;
+    margin-top: 40px;
+}
+
+#headerRow #exampleList {
+    margin-bottom: 60px;
+}
+
+#auctionRow {
+    background-color: white;
+}
+
+#auctionRow h1 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#statusRow {
+    background-color: #f2f2f2;
+}
+
+#statusRow h1 {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.faq {
+    margin-top: 30px;
+}
+
+.faqquestion {
+    font-weight: bold;
+}

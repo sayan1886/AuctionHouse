@@ -1,0 +1,262 @@
+# Operating Options:
+[parity]
+mode = "last"
+mode_timeout = 300
+mode_alarm = 3600
+# OPTIONS: "all", "critical", "none"
+auto_update = "none"
+# OPTIONS: "stable", "beta", "nightly", "testing", "current"
+release_track = "current"
+public_node = false
+no_download = false
+no_consensus = false
+# force_direct = false
+# OPTIONS:
+# (1) JSON chain specification file
+# (2) "olympic", "frontier", "homestead", "mainnet", "morden", 
+#     "ropsten", "classic", "expanse", "testnet", "kovan", "dev"
+chain = "$HOME/Library/Application Support/io.parity.ethereum/kovan/kovan.json"
+base_path = "$HOME/Library/Application Support/io.parity.ethereum/kovan"
+db_path = "$HOME/Library/Application Support/io.parity.ethereum/kovan/chains"
+keys_path = "$HOME/Library/Application Support/io.parity.ethereum/kovan/keys"
+# NOTE: Specify node name
+identity = "Auction"
+light = false
+
+# SEALING/MINING OPTIONS
+no_persistent_txqueue = false
+
+# Account Options:
+[account]    
+# unlock = ["0x983696f4594180ab677e76835834f871b21fe5b2"]
+password = ["$HOME/Library/Application Support/io.parity.ethereum/kovan/passwords/node.pwds"]
+keys_iterations = 10240
+no_hardware_wallets = false
+fast_unlock = false
+
+# UI Options:
+[ui]
+force = true
+disable = false
+port = 8180
+interface = "127.0.0.1"
+# Allowed Host header values
+# OPTIONS: "all", "none"
+hosts = []
+path = "$HOME/Library/Application Support/io.parity.ethereum/kovan/signer"
+# WARNING: only use in development
+no_validation = true
+
+# Networking Options:
+[network]
+port = 30303
+min_peers = 25
+max_peers = 50
+snapshot_peers = 0
+nat = "any"
+# Override network identifier from the chain we are on
+# Note: Kovan has ID of 42
+id = 42
+bootnodes = []
+# no_discovery = false
+discovery = true
+# no_warp = false 
+warp = false # --no-warp
+# Filter outbound connections 
+# OPTIONS: "private", "public", "all"
+allow_ips = "all"
+max_pending_peers = 64
+no_serve_light = false
+
+# node_key = "None"
+reserved_only = false
+# reserved_peers = "$HOME/Library/Application Support/io.parity.ethereum/kovan/enodes"
+
+# API and Console Options:
+[rpc]
+# no_jsonrpc = false
+disable = false
+port = 8545
+# OPTIONS:
+# (1) Interface IP Address
+# (2) "all", "local"
+interface = "local"
+# CORS Header for JSON-RPC API responses
+# Default: "None"
+cors = "null"
+# APIs available through the JSONRPC
+# Available: "all", "safe", "web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"
+# Default: "web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces", "rpc", "secretstore"
+# Note: Inconsistent since "Default" list includes values that are not in "Available" list
+# "personal" - https://github.com/paritytech/parity/wiki/JSONRPC-personal-module
+apis = ["web3", "eth", "net", "personal", "parity", "traces", "rpc", "secretstore"]
+# OPTIONS: "all", "none"
+hosts = ["none"]
+# Note: Requires DApps server to be disabled using `--no-dapps`
+# server_threads = "None"
+# threads = 0
+
+# WebSockets Server Options:
+[websockets]
+# no_ws = false
+disable = false
+port = 8546
+# OPTIONS: "all", "local"
+interface = "local"
+# APIs available through the WebSockets
+# Available: "web3", "eth", "pubsub", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"
+# Default: "web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces", "rpc", "secretstore"
+# Note: Inconsistent since "Default" list includes values that are not in "Available" list
+apis = ["web3", "eth", "net", "personal", "parity", "traces", "rpc", "secretstore"]
+# OPTIONS: "all", "none"
+origins = ["http://127.0.0.1:8180"]
+# OPTIONS: "all", "none"
+hosts = ["none"]
+
+# JSON-RPC over IPC Service Options
+[ipc]
+# no_ipc = false
+disable = false
+path = "$HOME/Library/Application Support/io.parity.ethereum/kovan/jsonrpc.ipc"
+# APIs available through the JSON-RPC over IPC
+# Default: "web3", "eth", "pubsub", "net", "parity", "parity_pubsub", "traces", "rpc", "secretstore"
+# Note: Inconsistent since no "Available" list provided
+apis = ["web3", "eth", "net", "parity", "parity_accounts", "personal", "traces", "rpc", "secretstore"]
+
+# DApps Server Options
+[dapps]
+# no_dapps = false
+disable = false
+path = "$HOME/Library/Application Support/io.parity.ethereum/kovan/dapps"
+
+# Secret Store Key Server Options:
+[secretstore]
+# no_secretstore = false
+disable = false
+# Note: Highlighted as "required" in https://github.com/paritytech/parity/wiki/Configuring-Parity#cli-options, but not included in the Sample config.toml file
+# secret = "None"
+# Note: Default not shown properly in https://github.com/paritytech/parity/wiki/Configuring-Parity#cli-options
+nodes = []
+http_interface = "local"
+http_port = 8082
+interface = "local"
+port = 8083
+path = "$HOME/Library/Application Support/io.parity.ethereum/kovan/secretstore"
+
+# IPFS API Server Options:
+[ipfs]
+enable = false
+port = 5001
+interface = "local"
+# Note: Inconsistent as shows Default value of "None" in CLI Options but "null" in Sample config.toml
+cors = "null"
+# OPTIONS: "all", "none"
+hosts = ["none"]
+
+# Mining Options:
+[mining]
+# Default: "None"
+# author = "0x983696f4594180ab677e76835834f871b21fe5b2"
+# Default: "None"
+# engine_signer = "0x983696f4594180ab677e76835834f871b21fe5b2"
+# Default: false
+force_sealing = true
+# OPTIONS: "none", "own", "ext", "all"
+reseal_on_txs = "all"
+reseal_on_uncle = false
+# Note: Differs from Defaults
+reseal_min_period = 4000
+reseal_max_period = 60000
+work_queue_size = 20
+# Default: "None"
+tx_gas_limit = "6283184"
+# Default: "None"
+tx_time_limit = 100 #ms
+# OPTIONS: "cheap", "strict", "lenient"
+relay_set = "cheap"
+usd_per_tx = "0.0025"
+# Note: May be an amount in USD, or "auto"
+usd_per_eth = "auto"
+# OPTIONS: "daily", "hourly", or of the form "2 days", "30 minutes"
+price_update_period = "hourly"
+gas_floor_target = "4700000"
+gas_cap = "6283184"
+# OPTIONS: Disable with 0
+tx_queue_mem_limit = 2
+tx_queue_size = 8192
+# OPTIONS: "off", an amount of gas, or "auto" (limit of 20x current block gas limit)
+tx_queue_gas = "off"
+# OPTIONS: "gas", "gas_price", "gas_factor"
+tx_queue_strategy = "gas_factor"
+tx_queue_ban_count = 1
+tx_queue_ban_time = 180 #s
+# Default: "None"
+extra_data = "Parity"
+# no_persistent_txqueue = false
+remove_solved = false
+# Default: "None"
+notify_work = ["http://localhost:3001"]
+refuse_service_transactions = false
+
+# Stratum Server Options
+[stratum]
+enable = false
+interface = "local"
+port = 8008
+secret = "None"
+
+# Footprint Options
+[footprint]
+# OPTIONS: "auto", "on", "off"
+tracing = "auto"
+# OPTIONS: "auto", "fast", "archive"
+pruning = "auto"
+pruning_history = 64
+# Note: Differs from Default of 32 in CLI Options
+pruning_memory = 500
+# Note: Differs from Default of 32 in CLI Options
+cache_size_db = 64
+cache_size_blocks = 8
+# Note: Differs from Default of 40 in CLI Options
+cache_size_queue = 50
+cache_size_state = 25
+# Overrides other caches with and queue options with this total size
+# Default: "None"
+cache_size = 128
+fast_and_loose = false
+# OPTIONS: "ssd", "hdd", "auto"
+db_compaction = "ssd"
+# OPTIONS: "auto", "on", "off"
+fat_db = "auto"
+# Default: false
+scale_verifiers = true
+# Default: "None"
+num_verifiers = 6
+
+# Import/Export Options:
+# ONLY SHOWN IN CLI OPTIONS
+
+# Snapshot Options:
+[snapshots]
+# OPTIONS: An index, hash, or "latest"
+# at = "latest"
+disable_periodic = false
+
+# Virtual Machine Options:
+[vm]
+jit = false
+
+# Legacy Options:
+# ONLY SHOWN IN CLI OPTIONS
+
+# Internal Options:
+# ONLY SHOWN IN CLI OPTIONS
+
+# Miscellaneous Options:
+[misc]
+# ntp_server = "None"
+# logging = "own_tx=trace"
+logging = "sync=trace"
+log_file = "$HOME/Library/Application Support/io.parity.ethereum/kovan/log/parity.log"
+color = true
+version = true

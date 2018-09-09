@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>AuctionHouse Dapp</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./stylesheets/app.css" rel='stylesheet' type='text/css'>
+
+    <script src="./javascripts/auctionhouse.js"></script>
+    <script src="./javascripts/network.js"></script>
+    <script src="./javascripts/app.js"></script>
+    <script src="./javascripts/createAuction.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./javascripts/jquery.min.js"></script>
+    <script src="./javascripts/web3.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="index.html"><img src="images/auctionhouse.png" alt="AuctionHouse" id="heroImage"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#auctionSection">Auctions</a></li>
+                    <li><a href="createAuction.html">New Auction</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+        <!-- Going to set up an 8-4 column grid -->
+        <div class="row">
+            <div class="col-md-8">
+
+                <!-- Main jumbotron for a primary marketing message or call to action -->
+                <div id="header"></div>
+
+                <h1>First reserve a sample name asset</h1>
+                <p><i>(This is an optional step to support the demo, that creates an
+          asset, to give you something to auction off below.)</i></p>
+                <table class="auctionDetails">
+                    <tr>
+                        <td class="auctionLabel"><label for="nameToReserve">Name
+	    To Reserve:</label></td>
+                        <td><input type="text" id="nameToReserve" placeholder="eg MyFamousWallet.eth"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auctionLabel">&nbsp;</td>
+                        <td><button id="send" onclick="createAsset()">Register Name</button></td>
+                    </tr>
+                </table>
+                <hr />
+
+                <h1>Now auction off your item</h1>
+                <table class="auctionDetails">
+                    <tr>
+                        <td class="auctionLabel"><label for="nameToAuction">Asset
+	    RecordId to Auction:</label></td>
+                        <td><input type="text" id="nameToAuction" placeholder="eg MyFamousWallet.eth"></input>
+                            <br>
+                            <p><i>(Name registered above.)</i></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="auctionLabel"><label for="contractAddress">Contract
+	    Address:</label></td>
+                        <td><input type="text" id="contractAddress" placeholder="eg
+                          0x00aa39d30f0d20ff03a22ccfc30b7efbfca597c2"></input>
+                            <br>
+                            <p><i>(If auctioning a name registered above, use the
+		prefilled value.)</i></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="auctionLabel"><label for="startingPrice">Starting Price in Ether:</label></td>
+                        <td><input type="text" id="startingPrice" placeholder="eg 2.2"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auctionLabel"><label for="reservePrice">Reserve Price in Ether:</label></td>
+                        <td><input type="text" id="reservePrice" placeholder="eg 3.0"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auctionLabel"><label for="deadline">Deadline in mins:</label></td>
+                        <td><input type="text" id="deadline" placeholder="eg 60 mins"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auctionLabel">&nbsp;</td>
+                        <td><button id="createAuction" onclick="createAuction()">Create Auction</button></td>
+                    </tr>
+                </table>
+
+                <hr />
+                <h2>Your active auctions</h2>
+                <span id="userAuctions"></span>
+
+            </div>
+            <!-- The column of 8 -->
+
+            <div class="col-md-4">
+                <!-- The right column of 4 -->
+                <div id="right-column">
+
+                    <div class="panel panel-success" id="statusPanel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Ethereum Status</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                Your address:
+                                <span id="address"></span>
+                                <br> Your wallet balance: <span id="ethBalance"></span>
+                                <br> Your network: <span id="network"></span>
+                                <br>
+                            </p>
+                            <div>
+                                Your withdraw balance: <span id="withdrawBalance"></span><button id="withdrawButton" class="btn-sm btn-link" onclick="withdraw()">withdraw</button>
+                            </div>
+                            <p></p>
+
+                            <p><span id="statusMessage"></span><span id="spinner"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- original row -->
+
+    </div>
+    <!-- container -->
+
+</body>
+
+</html>
